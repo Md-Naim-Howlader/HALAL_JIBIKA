@@ -1,17 +1,16 @@
-import { useRouteError } from "react-router-dom";
-import notFoundImg from "../../assets/image/error404.jpg";
+import { useNavigate } from "react-router-dom";
+import notFoundImg from "../../assets/image/error404.svg";
+import { goBack, notFoundContainer } from "./error.module.css";
 const NotFound = () => {
-  const error = useRouteError();
-  console.log(error);
-
+  const navigate = useNavigate();
   return (
-    <div style={{ textAlign: "center", padding: "20px 0" }}>
-      <img style={{ width: "350px" }} src={notFoundImg} alt="" />
+    <div className={notFoundContainer}>
+      <img src={notFoundImg} alt="" />
       <h1>Opps!</h1>
-      <p style={{ fontSize: "20px" }}>
-        Sorry!, an unexpected error has accurred.
-      </p>
-      <button>Back</button>
+      <p>Sorry!, an unexpected error has accurred.</p>
+      <button className={goBack} onClick={() => navigate(-1)}>
+        Go back
+      </button>
     </div>
   );
 };

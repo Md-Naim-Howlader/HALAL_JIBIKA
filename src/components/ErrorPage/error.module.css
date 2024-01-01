@@ -1,0 +1,26 @@
+.goBack {
+  background: #198754;
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 17px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.notFoundContainer {
+  padding: 20px 0;
+  text-align: center;
+}
+.notFoundContainer img {
+  width: 400px;
+}
+.notFoundContainer h1 {
+  font-size: 50px;
+  font-family: "Jost", sans-serif;
+}
+.notFoundContainer p {
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}

@@ -59,6 +59,10 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.job__posts .post:hover {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .post__owner_info {
   display: flex;

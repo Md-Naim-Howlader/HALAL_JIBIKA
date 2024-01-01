@@ -13,7 +13,7 @@ const Header = () => {
   const handleToggle = () => {
     setToggle(!toggle);
 
-    // navBar toggling
+    // toggling
     toggle
       ? toggleRef.current.classList.remove("show")
       : toggleRef.current.classList.add("show");
