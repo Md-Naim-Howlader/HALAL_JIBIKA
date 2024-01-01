@@ -1,0 +1,143 @@
+.header {
+  background-color: #fff;
+  padding: 10px 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+.header img {
+  width: 200px;
+}
+
+/* toggle button style start */
+.navToggle {
+  display: none;
+  text-align: end;
+}
+.navToggle button {
+  border: none;
+  color: #198754;
+  cursor: pointer;
+  background: transparent;
+  font-size: 30px;
+}
+
+.header__items {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: flex-end;
+  align-content: flex-end;
+}
+.header__items nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.header__items nav ul li {
+  margin-bottom: 0;
+  display: inline;
+  text-align: left;
+  margin-right: 30px;
+  border-radius: 0;
+}
+
+.header__items nav ul li:last-child {
+  margin-right: 0;
+}
+.header__items nav ul li a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 18px;
+  color: #5f687b;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+}
+.header__items nav ul li a.active {
+  color: #198754;
+}
+.header__items nav ul li a:hover,
+.header__items nav ul li a:focus,
+.header__items nav ul li a:active {
+  color: #198754;
+}
+.header__items nav ul li button {
+  background: #198754;
+  padding: 10px 10px;
+  font-size: 17px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  border-radius: 5px;
+}
+.header__items nav ul li button.userBtn {
+  color: #198754;
+  background: #fff;
+  font-size: 30px;
+}
+.header__items nav ul li button.userBtn span {
+  display: inline-block;
+  font-size: 18px;
+  position: relative;
+  top: -8px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* navIcon */
+
+@media screen and (max-width: 992px) {
+  .header__items {
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: flex-end;
+    align-content: flex-end;
+  }
+  .header__items .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header__items nav {
+    display: none;
+  }
+  .header__items nav ul li button {
+    padding: 8px 10px;
+    font-size: 17px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+  }
+  .header__items nav ul li {
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    border-radius: 4px;
+    margin-right: 0;
+  }
+  nav.navBar {
+    margin: auto;
+  }
+  .header__items nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .navToggle {
+    display: block;
+  }
+
+  .show {
+    display: block !important;
+  }
+}

@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Open+Sans:wght@400;700&family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Roboto:ital,wght@0,400;0,500;1,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section__title {
+  position: relative;
+  text-align: center;
+  z-index: 99;
+}
+
+.section__title span {
+  position: absolute;
+  color: #f0f1f3;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  font-weight: 700;
+  font-size: 3rem;
+  text-transform: uppercase;
+  line-height: 0;
+
+  font-family: "Open Sans", sans-serif;
+}
+.section__title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  color: #5f687b;
+  font-family: "Raleway", sans-serif;
+  z-index: 999;
+}
+.section__title p {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  color: #5f687b;
+}
+
+/* job post style start */
+.job__posts {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 25px;
+}
+.job__posts .post {
+  background: #ffffff;
+  padding: 30px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.post__owner_info {
+  display: flex;
+}
+.post__owner_info img {
+  margin-right: 30px;
+  width: 70px;
+}
+.post__owner_info .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.post__owner_info .info h4 {
+  color: #272a33;
+  font-size: 20px;
+  margin-bottom: 9px;
+  font-family: "Jost", sans-serif;
+  transition: all 0.3s;
+}
+.post:hover .post__owner_info .info h4 {
+  color: #198754;
+}
+
+.post__body h3 {
+  color: #272a33;
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  margin-top: 5px;
+}
+.post__body span {
+  font-size: 17px;
+  line-height: 1.87;
+  color: #198754;
+  font-family: "Jost", sans-serif;
+}
+.post__body p {
+  font-size: 16px;
+  color: #656565;
+  color: #272a33;
+  font-family: "Jost", sans-serif;
+}
+.post__body .buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.post__body .buttons .edit_delete {
+  margin-top: 5px;
+  margin-left: 30px;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  color: #198754;
+  cursor: pointer;
+}
+.post__body .apply__btn {
+  background: #198754;
+  border: none;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* job post style end */
+
+@media screen and (max-width: 992px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+/* 
+font-family: 'Jost', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Roboto', sans-serif; */
