@@ -1,0 +1,26 @@
+.job__details {
+  padding: 40px 0;
+}
+.job__details p {
+  margin-bottom: 20px;
+}
+.job__details P span {
+  font-size: 19px;
+  font-weight: 500;
+}
+.job__details p ul li {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.job__details p ul li::after {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #198754;
+  margin-right: 5px;
+}

@@ -6,6 +6,7 @@ import About from "../Pages/About/About";
 import Jobs from "../Pages/Jobs/Jobs";
 import Favorite from "../Pages/Favorite/Favorite";
 import Contact from "../Pages/Contact/Contact";
+import JobDetails from "../Pages/JobDetails/JobDetails";
 
 const routes = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const routes = createBrowserRouter([
       {
         path: "/jobs",
         element: <Jobs />,
+      },
+      {
+        path: "/jobs/:postId",
+        element: <JobDetails />,
       },
       {
         path: "/favorite",

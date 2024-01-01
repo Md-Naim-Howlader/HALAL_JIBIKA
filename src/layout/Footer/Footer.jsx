@@ -165,7 +165,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="container foter__copyright">
-        <p>Copyright &copy; HALAL JIBIKA 2023. All Rights Reserved.</p>
+        <p>Copyright &copy; HALAL JIBIKA 2024. All Rights Reserved.</p>
       </div>
     </footer>
   );

@@ -1,11 +1,16 @@
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Job = ({ job }) => {
-  const { title, logo, companyName, position, description } = job;
+  const { id, title, logo, companyName, position, description } = job;
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/jobs/${id}`);
+  };
   return (
-    <div className="post" title="Show Details">
+    <div onClick={handleClick} className="post" title="Show Details">
       <div className="post__owner_info">
         <img src={logo} alt="Darkento Ltd." />
         <div className="info">
