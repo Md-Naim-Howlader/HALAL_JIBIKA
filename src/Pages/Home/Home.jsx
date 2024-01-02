@@ -1,12 +1,33 @@
 import "./home.css";
-import DisplayJob from "./displayJob";
+import DisplayJob from "./DisplayJob";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import useFetch from "../../Hooks/useFetch";
-import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
+import NotFound from "../../components/ErrorPage/NotFound";
+import { useContext } from "react";
+import { JobContext } from "../../Context/JobContext";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebase.config";
 const Home = () => {
-  const { data } = useFetch("http://localhost:9000/jobs");
+  const { data, isError, isLoading } = useContext(JobContext);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
+
+  const handleExplore = () => {
+    if (!user) {
+      navigate("/signUp");
+    } else {
+      navigate("/jobs");
+    }
+  };
+  const handleAllJobs = () => {
+    if (!user) {
+      navigate("/signUp");
+    } else {
+      navigate("/jobs");
+    }
+  };
   return (
     <section className="hero__section">
       <div className="hero__area">
@@ -20,7 +41,7 @@ const Home = () => {
               in this plactform.
             </p>
             <div className="explore__more">
-              <button>Explore More...</button>
+              <button onClick={handleExplore}>Explore More...</button>
             </div>
           </div>
         </div>
@@ -32,13 +53,15 @@ const Home = () => {
             <h2>Latest Jobs</h2>
           </div>
           <div className="job__posts">
+            {isLoading && <Loading />}
+            {isError && <NotFound />}
             {data &&
               data
                 .slice(0, 5)
                 .map((job) => <DisplayJob key={job.id} job={job} />)}
           </div>
           <div className="explore__btn">
-            <button onClick={() => navigate("/jobs")}>
+            <button onClick={handleAllJobs}>
               Explore All Jobs{" "}
               <span
                 style={{

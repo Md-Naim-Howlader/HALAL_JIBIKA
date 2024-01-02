@@ -69,7 +69,6 @@
   padding: 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
-  cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 .job__posts .post:hover {
