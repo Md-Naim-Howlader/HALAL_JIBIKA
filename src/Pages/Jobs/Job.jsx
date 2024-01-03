@@ -4,35 +4,23 @@ import { FaHeart } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { JobContext } from "../../Context/JobContext";
+
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
+import ToggleFavJob from "../../utils/ToggleFavJob";
 const Job = ({ job }) => {
-  const [isActive, setIsActive] = useState(false);
   const [user] = useAuthState(auth);
   // destucture job
   const { id, title, logo, companyName, position, description } = job;
 
   // call jobContext get need data
-  const { dispatch, addFavorite, removeFavorite } = useContext(JobContext);
 
   // navigate route
   const navigate = useNavigate();
   const handleDetailsClick = () => {
     navigate(`/jobs/${id}`);
   };
-
-  // handle add favorite job
-  const handleAddFavJob = () => {
-    setIsActive(!isActive);
-    addFavorite(dispatch, job);
-  };
-  // handle remove favorite job
-  const handleRemoveFavJob = (id) => {
-    setIsActive(!isActive);
-    removeFavorite(dispatch, id);
-  };
+  const { favToggle, handleAddFav, handleRemoveFav } = ToggleFavJob(job);
   return (
     <div className="post">
       <div
@@ -69,24 +57,15 @@ const Job = ({ job }) => {
             Apply Now
           </button>
           {/* favorite icons start */}
-          {isActive ? (
-            <button
-              style={{ color: "red" }}
-              onClick={() => handleRemoveFavJob(id)}
-              className="edit_delete"
-              title="Dislike"
-            >
-              <FaHeart />
-            </button>
-          ) : (
-            <button
-              onClick={handleAddFavJob}
-              className="edit_delete"
-              title="Favorite"
-            >
-              <FaRegHeart />
-            </button>
-          )}
+
+          <button
+            onClick={favToggle ? () => handleRemoveFav(id) : handleAddFav}
+            style={{ color: "red" }}
+            className="edit_delete"
+          >
+            {!favToggle ? <FaRegHeart /> : <FaHeart />}
+          </button>
+
           {/* favorite icons end */}
           <button className="edit_delete" title="Edit">
             <FaEdit />

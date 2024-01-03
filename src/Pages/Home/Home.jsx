@@ -9,8 +9,10 @@ import { useContext } from "react";
 import { JobContext } from "../../Context/JobContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
+
 const Home = () => {
   const { data, isError, isLoading } = useContext(JobContext);
+
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -28,6 +30,7 @@ const Home = () => {
       navigate("/jobs");
     }
   };
+
   return (
     <section className="hero__section">
       <div className="hero__area">

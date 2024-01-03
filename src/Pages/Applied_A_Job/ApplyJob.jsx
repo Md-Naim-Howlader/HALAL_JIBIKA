@@ -1,10 +1,21 @@
+import { useContext } from "react";
+import { JobContext } from "../../Context/JobContext";
+
+import Apply from "./Apply";
 const ApplyJob = () => {
+  const { applyedJobs } = useContext(JobContext);
+
   return (
-    <section>
-      <div className="container">
-        <h1>Applyed Job Page</h1>
+    <div>
+      <div style={{ paddingTop: "30px" }} className="section__title">
+        <span>APPLYED JOB</span>
+        <h2>APPLYED JOB</h2>
       </div>
-    </section>
+      <div style={{ padding: "30px 0" }} className="job__posts container">
+        {applyedJobs &&
+          applyedJobs.map((job) => <Apply key={job.id} job={job} />)}
+      </div>
+    </div>
   );
 };
 

@@ -18,7 +18,7 @@
   transition: all 0.3s ease-in-out;
 }
 .container {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
 }
 .section__title {
@@ -61,7 +61,8 @@
 /* job post style start */
 .job__posts {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
   grid-gap: 25px;
 }
 .job__posts .post {
@@ -146,6 +147,14 @@
 @media screen and (max-width: 992px) {
   .container {
     padding: 0 15px;
+  }
+  .job__posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+  .job__posts {
+    grid-template-columns: 1fr;
   }
 }
 /* 

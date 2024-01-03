@@ -1,44 +1,25 @@
+import ToggleFavJob from "../../utils/ToggleFavJob";
 import { FaRegHeart } from "react-icons/fa";
 
 import { FaHeart } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase/firebase.config";
-import { useContext } from "react";
-import { JobContext } from "../../Context/JobContext";
+
+import ToggleApplyJob from "../../utils/ToggleApplyJob";
 
 const DisplayJob = ({ job }) => {
-  const { isFavorite, id, title, logo, companyName, position, description } =
-    job;
+  const { id, title, logo, companyName, position, description } = job;
 
-  const { dispatch, addFavorite, removeFavorite } = useContext(JobContext);
-
-  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const handleClick = (id) => {
     navigate(`/jobs/${id}`);
   };
 
-  // handle add favorite job
-  const handleAddFav = (id) => {
-    // AddFavorite(`http://localhost:9000/jobs/${id}`, job, true);
-    const obj = {
-      url: `http://localhost:9000/jobs/${id}`,
-      status: true,
-    };
-    addFavorite(dispatch, obj);
-  };
-  // handle remove favorite job
-  const handleRemoveFav = (id) => {
-    // AddFavorite(`http://localhost:9000/ jobs/${id}`, job, false);
-    const obj = {
-      url: `http://localhost:9000/jobs/${id}`,
-      status: false,
-    };
-    removeFavorite(dispatch, obj);
-  };
+  // favorite and apply toggle  jobs
+
+  const { favToggle, handleAddFav, handleRemoveFav } = ToggleFavJob(job);
+  const { applyToggle, handleAddApply } = ToggleApplyJob(job);
 
   return (
     <div className="post">
@@ -52,7 +33,7 @@ const DisplayJob = ({ job }) => {
         <div className="post__owner_info">
           <img src={logo} alt="Darkento Ltd." />
           <div className="info">
-            <h4>{companyName}</h4>
+            <h4>Company Name: {companyName}</h4>
           </div>
         </div>
         <button
@@ -69,7 +50,8 @@ const DisplayJob = ({ job }) => {
         <p>{description}</p>
         <div className="buttons">
           <button
-            onClick={() => navigate(user ? "/applyJob" : "/signUp")}
+            disabled={applyToggle ? true : false}
+            onClick={handleAddApply}
             className="apply__btn"
             title="Apply Now"
           >
@@ -77,24 +59,18 @@ const DisplayJob = ({ job }) => {
           </button>
 
           {/* favorite icons start */}
-          {isFavorite ? (
-            <button
-              style={{ color: "red" }}
-              onClick={() => handleRemoveFav(id)}
-              className="edit_delete"
-              title="Dislike"
-            >
-              <FaHeart />
-            </button>
-          ) : (
-            <button
-              onClick={() => handleAddFav(id, job)}
-              className="edit_delete"
-              title="Favorite"
-            >
-              <FaRegHeart />
-            </button>
-          )}
+
+          <button
+            onClick={favToggle ? () => handleRemoveFav(id) : handleAddFav}
+            className="edit_delete"
+          >
+            {!favToggle ? (
+              <FaRegHeart style={{ color: "red" }} />
+            ) : (
+              <FaHeart style={{ color: "red" }} />
+            )}
+          </button>
+
           {/* favorite icons end */}
           <button className="edit_delete" title="Edit">
             <FaEdit />

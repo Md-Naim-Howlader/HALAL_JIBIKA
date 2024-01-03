@@ -1,9 +1,9 @@
 import { MdDelete } from "react-icons/md";
-import { FaRegHeart } from "react-icons/fa";
-
-import { FaHeart } from "react-icons/fa";
+import ToggleFavJob from "../../utils/ToggleFavJob";
 const Favorite = ({ fav }) => {
-  const { isFavorite, title, logo, companyName, position, description } = fav;
+  const { id, title, logo, companyName, position, description } = fav;
+  const { favToggle, handleRemoveFav } = ToggleFavJob(fav);
+
   return (
     <div>
       <div className="post">
@@ -32,25 +32,12 @@ const Favorite = ({ fav }) => {
             <button className="apply__btn" title="Apply Now">
               Apply Now
             </button>
-            {/* favorite icons start */}
-            {isFavorite ? (
-              <button
-                style={{ color: "red" }}
-                className="edit_delete"
-                title="Dislike"
-              >
-                <FaHeart />
-              </button>
-            ) : (
-              <button className="edit_delete" title="Favorite">
-                <FaRegHeart />
-              </button>
-            )}
-            {/* favorite icons end */}
+
             <button
               style={{ color: "#DC3545" }}
               className="edit_delete"
               title="Delete"
+              onClick={favToggle ? () => handleRemoveFav(id) : ""}
             >
               <MdDelete />
             </button>

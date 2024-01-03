@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./header.css";
 import { FaBars } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
@@ -15,6 +15,7 @@ import auth from "../../firebase/firebase.config";
 import { useSignOut } from "react-firebase-hooks/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import Swal from "sweetalert2";
+import { JobContext } from "../../Context/JobContext";
 // authentication user
 const Header = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -35,6 +36,7 @@ const Header = () => {
       ? toggleRef.current.classList.remove("show")
       : toggleRef.current.classList.add("show");
   };
+  const { favJobs } = useContext(JobContext);
 
   // signout
   const handleSignOut = () => {
@@ -89,6 +91,12 @@ const Header = () => {
                   Post a Job
                 </NavLink>
               </li>
+
+              {userInfo && (
+                <li>
+                  <NavLink to="/applyJob">Applyed Job</NavLink>
+                </li>
+              )}
               <li>
                 <NavLink to="/about">About</NavLink>
               </li>
@@ -120,7 +128,7 @@ const Header = () => {
               </li>
               <li className="fav">
                 <button onClick={() => navigate("/favorite")}>Favorite</button>
-                <span>5</span>
+                <span>{favJobs.length > 0 ? favJobs.length : ""}</span>
               </li>
               <li>
                 <button onClick={() => navigate("/signUp")} className="userBtn">

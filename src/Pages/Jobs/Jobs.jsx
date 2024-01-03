@@ -19,7 +19,9 @@ const Jobs = () => {
           {isLoading && <Loading />}
           {isError && <NotFound />}
 
-          {data && data.map((job) => <Job key={job.id} job={job} />)}
+          {data.map((job) => (
+            <Job key={job.id} job={job} />
+          ))}
         </div>
       </div>
     </section>
