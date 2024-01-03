@@ -6,11 +6,13 @@ import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-import ToggleApplyJob from "../../utils/ToggleApplyJob";
+import auth from "../../firebase/firebase.config";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { deleteJob } from "../../utils/deleteJob";
 
-const DisplayJob = ({ job }) => {
+const DisplayJob = ({ job, data, setData }) => {
   const { id, title, logo, companyName, position, description } = job;
-
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const handleClick = (id) => {
     navigate(`/jobs/${id}`);
@@ -19,7 +21,10 @@ const DisplayJob = ({ job }) => {
   // favorite and apply toggle  jobs
 
   const { favToggle, handleAddFav, handleRemoveFav } = ToggleFavJob(job);
-  const { applyToggle, handleAddApply } = ToggleApplyJob(job);
+
+  const handleDeleteJob = (id) => {
+    deleteJob(id, data, setData);
+  };
 
   return (
     <div className="post">
@@ -50,8 +55,7 @@ const DisplayJob = ({ job }) => {
         <p>{description}</p>
         <div className="buttons">
           <button
-            disabled={applyToggle ? true : false}
-            onClick={handleAddApply}
+            onClick={() => navigate(user ? "/applyJob" : "/signUp")}
             className="apply__btn"
             title="Apply Now"
           >
@@ -76,6 +80,7 @@ const DisplayJob = ({ job }) => {
             <FaEdit />
           </button>
           <button
+            onClick={() => handleDeleteJob(id)}
             style={{ color: "#DC3545" }}
             className="edit_delete"
             title="Delete"

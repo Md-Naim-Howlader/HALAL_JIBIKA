@@ -2,17 +2,16 @@ import "./home.css";
 import DisplayJob from "./DisplayJob";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
-import { useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
-import NotFound from "../../components/ErrorPage/NotFound";
-import { useContext } from "react";
-import { JobContext } from "../../Context/JobContext";
+import { useLoaderData, useNavigate } from "react-router-dom";
+
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { data, isError, isLoading } = useContext(JobContext);
-
+  const jobs = useLoaderData();
+  // set data (jobs) for state
+  const [data, setData] = useState(jobs);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -30,6 +29,11 @@ const Home = () => {
       navigate("/jobs");
     }
   };
+
+  // useEffect
+  useEffect(() => {
+    setData(data);
+  }, [data]);
 
   return (
     <section className="hero__section">
@@ -56,16 +60,21 @@ const Home = () => {
             <h2>Latest Jobs</h2>
           </div>
           <div className="job__posts">
-            {isLoading && <Loading />}
-            {isError && <NotFound />}
             {data &&
               data
                 .slice(0, 5)
-                .map((job) => <DisplayJob key={job.id} job={job} />)}
+                .map((job) => (
+                  <DisplayJob
+                    key={job.id}
+                    job={job}
+                    data={data}
+                    setData={setData}
+                  />
+                ))}
           </div>
           <div className="explore__btn">
             <button onClick={handleAllJobs}>
-              Explore All Jobs{" "}
+              All Jobs{" "}
               <span
                 style={{
                   display: "inline-block",

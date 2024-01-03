@@ -77,7 +77,7 @@ const Contact = () => {
   return (
     <section>
       <div className="container">
-        <div style={{ paddingTop: "30px" }} className="section__title">
+        <div style={{ paddingTop: "10px" }} className="section__title">
           <span>CONTACT US</span>
           <h2>CONTACT US</h2>
           <p>

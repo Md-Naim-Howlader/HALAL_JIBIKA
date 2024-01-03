@@ -13,6 +13,7 @@ import Login from "../Pages/Auth/Login/Login";
 import SignUp from "../Pages/Auth/SignUp/SignUp";
 import FavoriteJob from "../Pages/Favorite/FavoriteJob";
 import FireBaseError from "../components/fireBaseError/FireBaseError";
+import { baseURL } from "../baseURL/baseURL";
 
 const routes = createBrowserRouter([
   {
@@ -23,6 +24,8 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch(baseURL),
+        errorElement: <NotFound />,
       },
       {
         path: "/about",
@@ -31,6 +34,14 @@ const routes = createBrowserRouter([
       {
         path: "/jobs",
         element: <Jobs />,
+        loader: () => fetch(baseURL),
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/jobs/:postId",
+        element: <JobDetails />,
+        loader: ({ params }) => fetch(`${baseURL}/${params.postId}`),
+        errorElement: <NotFound />,
       },
       {
         path: "/postJob",
@@ -40,10 +51,7 @@ const routes = createBrowserRouter([
         path: "/applyJob",
         element: <ApplyJob />,
       },
-      {
-        path: "/jobs/:postId",
-        element: <JobDetails />,
-      },
+
       {
         path: "/favorite",
         element: <FavoriteJob />,

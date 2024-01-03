@@ -2,11 +2,9 @@ import Swal from "sweetalert2";
 import { post_form } from "./post.module.css";
 import axios from "axios";
 
-import { useContext } from "react";
-import { JobContext } from "./../../Context/JobContext";
+import { baseURL } from "../../baseURL/baseURL";
 
 const PostJob = () => {
-  const { data } = useContext(JobContext);
   // handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,30 +78,39 @@ const PostJob = () => {
     }
 
     axios
-      .post("http://localhost:9000/jobs", {
+      .post(baseURL, {
         companyName: companyName,
         logo: companyLogo,
         position: position,
         title: jobTitle,
-        id: data.length + 1,
+
+        id: new Date().getTime(),
         description: description,
       })
-      .then(function (response) {
-        console.log(response);
+      .then(function () {
+        Swal.fire({
+          icon: "success",
+          title: "Job Post Successfully",
+          toast: true,
+          position: "top center",
+          showConfirmButton: false,
+          timer: 2000,
+          showCloseButton: true,
+        });
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (err) {
+        console.log(err);
+        Swal.fire({
+          icon: "warning",
+          title: "Job Post Unsuccessful!",
+          toast: true,
+          position: "top center",
+          showConfirmButton: false,
+          timer: 2000,
+          showCloseButton: true,
+        });
       });
 
-    Swal.fire({
-      icon: "success",
-      title: "Job Post Successfully",
-      toast: true,
-      position: "top center",
-      showConfirmButton: false,
-      timer: 2000,
-      showCloseButton: true,
-    });
     e.target.companyName.value = "";
     e.target.companyLogo.value = "";
     e.target.jobTitle.value = "";

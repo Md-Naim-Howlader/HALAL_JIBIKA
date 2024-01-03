@@ -1,12 +1,16 @@
-import { useContext } from "react";
-import NotFound from "../../components/ErrorPage/NotFound";
-import Loading from "../../components/Loading/Loading";
+import { useEffect, useState } from "react";
 import Job from "./Job";
 import "./jobs.css";
-import { JobContext } from "../../Context/JobContext";
+
+import { useLoaderData } from "react-router-dom";
 
 const Jobs = () => {
-  const { data, isLoading, isError } = useContext(JobContext);
+  const data = useLoaderData();
+  const [updateData, setUpdateData] = useState(data);
+
+  useEffect(() => {
+    setUpdateData(data);
+  }, [data]);
 
   return (
     <section>
@@ -16,12 +20,15 @@ const Jobs = () => {
           <h2>JOBS</h2>
         </div>
         <div className="job__posts all_jobs">
-          {isLoading && <Loading />}
-          {isError && <NotFound />}
-
-          {data.map((job) => (
-            <Job key={job.id} job={job} />
-          ))}
+          {data &&
+            data.map((job) => (
+              <Job
+                key={job.id}
+                job={job}
+                updateData={updateData}
+                setUpdateData={setUpdateData}
+              />
+            ))}
         </div>
       </div>
     </section>

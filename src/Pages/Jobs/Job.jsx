@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
 import ToggleFavJob from "../../utils/ToggleFavJob";
-const Job = ({ job }) => {
+import { deleteJob } from "../../utils/deleteJob";
+
+const Job = ({ job, updateData, setUpdateData }) => {
   const [user] = useAuthState(auth);
   // destucture job
   const { id, title, logo, companyName, position, description } = job;
@@ -21,6 +23,12 @@ const Job = ({ job }) => {
     navigate(`/jobs/${id}`);
   };
   const { favToggle, handleAddFav, handleRemoveFav } = ToggleFavJob(job);
+
+  // handle delete job
+  const handleDeleteJob = (id) => {
+    deleteJob(id, updateData, setUpdateData);
+  };
+
   return (
     <div className="post">
       <div
@@ -71,6 +79,7 @@ const Job = ({ job }) => {
             <FaEdit />
           </button>
           <button
+            onClick={() => handleDeleteJob(id)}
             style={{ color: "#DC3545" }}
             className="edit_delete"
             title="Delete"
