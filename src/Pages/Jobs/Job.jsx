@@ -17,8 +17,8 @@ const Job = ({ job, updateData, setUpdateData }) => {
   // destucture job
   const { id, title, logo, companyName, position, description } = job;
 
-  // call jobContext get need data
-
+  // call jobContext get data
+  const { dispatch, addApply, addUpdate } = useContext(JobContext);
   // navigate route
   const navigate = useNavigate();
   const handleDetailsClick = () => {
@@ -32,10 +32,16 @@ const Job = ({ job, updateData, setUpdateData }) => {
   };
 
   // add apply
-  const { dispatch, addApply } = useContext(JobContext);
+
   const handleApplyClick = () => {
     addApply(dispatch, job);
     navigate(user ? "/applyJob" : "/signUp");
+  };
+
+  // updatejob
+  const handleUpdateJob = () => {
+    addUpdate(dispatch, job);
+    navigate(user ? "/updateJob" : "/signUp");
   };
   return (
     <div className="post">
@@ -83,7 +89,11 @@ const Job = ({ job, updateData, setUpdateData }) => {
           </button>
 
           {/* favorite icons end */}
-          <button className="edit_delete" title="Edit">
+          <button
+            onClick={handleUpdateJob}
+            className="edit_delete"
+            title="Edit"
+          >
             <FaEdit />
           </button>
           <button

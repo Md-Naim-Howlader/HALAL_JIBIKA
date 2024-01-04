@@ -14,7 +14,7 @@ import { JobContext } from "../../Context/JobContext";
 
 const DisplayJob = ({ job, data, setData }) => {
   const { id, title, logo, companyName, position, description } = job;
-  const { dispatch, addApply } = useContext(JobContext);
+  const { dispatch, addApply, addUpdate } = useContext(JobContext);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const handleClick = (id) => {
@@ -33,6 +33,12 @@ const DisplayJob = ({ job, data, setData }) => {
   const handleApplyJob = () => {
     addApply(dispatch, job);
     navigate(user ? "/applyJob" : "/signUp");
+  };
+
+  // handle update job
+  const handleUpdateJob = () => {
+    addUpdate(dispatch, job);
+    navigate(user ? "/updateJob" : "/signUp");
   };
   return (
     <div className="post">
@@ -81,7 +87,11 @@ const DisplayJob = ({ job, data, setData }) => {
           </button>
 
           {/* favorite icons end */}
-          <button className="edit_delete" title="Edit">
+          <button
+            onClick={handleUpdateJob}
+            className="edit_delete"
+            title="Edit"
+          >
             <FaEdit />
           </button>
           <button

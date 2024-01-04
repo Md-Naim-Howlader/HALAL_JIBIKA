@@ -35,7 +35,7 @@ const Favorite = ({ fav }) => {
 
             <button
               className="btn"
-              style={{ background: "#DC3545" }}
+              style={{ background: "#DC3545", padding: "5px 13px" }}
               title="Undo Favorite job"
               onClick={favToggle ? () => handleRemoveFav(id) : ""}
             >

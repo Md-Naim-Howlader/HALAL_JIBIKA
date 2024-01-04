@@ -133,6 +133,9 @@
   color: #198754;
   cursor: pointer;
 }
+.post__body .buttons .edit_delete:hover {
+  color: #272a33;
+}
 .post__body .apply__btn {
   background: #198754;
   border: none;

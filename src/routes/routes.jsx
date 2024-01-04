@@ -14,6 +14,7 @@ import SignUp from "../Pages/Auth/SignUp/SignUp";
 import FavoriteJob from "../Pages/Favorite/FavoriteJob";
 import FireBaseError from "../components/fireBaseError/FireBaseError";
 import { baseURL } from "../baseURL/baseURL";
+import Update_Job from "../Pages/Update_Job/Update_Job";
 
 const routes = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const routes = createBrowserRouter([
       {
         path: "/favorite",
         element: <FavoriteJob />,
+      },
+      {
+        path: "/updateJob",
+        element: <Update_Job />,
       },
       {
         path: "/contact",
