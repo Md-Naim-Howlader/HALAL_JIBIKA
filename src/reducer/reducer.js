@@ -1,9 +1,4 @@
-import {
-  ADD_APPLY,
-  ADD_FAVORITE,
-  REMOVE_APPLY,
-  REMOVE_FAVORITE,
-} from "./actionsType";
+import { ADD_APPLY, ADD_FAVORITE, REMOVE_FAVORITE } from "./actionsType";
 
 const reducer = (state, action) => {
   const { type, payload } = action;
@@ -23,11 +18,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         applyedJobs: [payload],
-      };
-    case REMOVE_APPLY:
-      return {
-        ...state,
-        applyedJobs: [...state.applyedJobs].filter((job) => job.id !== payload),
       };
 
     default:

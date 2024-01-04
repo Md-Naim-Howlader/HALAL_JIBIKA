@@ -95,11 +95,11 @@ const ApplyJob = () => {
           </div>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="name">Canditate name:</label>
               <input autoFocus type="text" name="name" id="name" />
             </div>
             <div>
-              <label htmlFor="email">Email Address:</label>
+              <label htmlFor="email">Canditate email address:</label>
               <input type="email" name="email" id="email" />
             </div>
             <div>

@@ -1,4 +1,4 @@
-import { MdDelete } from "react-icons/md";
+// import { MdDelete } from "react-icons/md";
 import ToggleFavJob from "../../utils/ToggleFavJob";
 const Favorite = ({ fav }) => {
   const { id, title, logo, companyName, position, description } = fav;
@@ -34,12 +34,12 @@ const Favorite = ({ fav }) => {
             </button>
 
             <button
-              style={{ color: "#DC3545" }}
-              className="edit_delete"
-              title="Delete"
+              className="btn"
+              style={{ background: "#DC3545" }}
+              title="Undo Favorite job"
               onClick={favToggle ? () => handleRemoveFav(id) : ""}
             >
-              <MdDelete />
+              Undo Favorite Job
             </button>
           </div>
         </div>

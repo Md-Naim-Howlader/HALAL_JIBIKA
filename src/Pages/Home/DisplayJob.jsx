@@ -74,13 +74,10 @@ const DisplayJob = ({ job, data, setData }) => {
 
           <button
             onClick={favToggle ? () => handleRemoveFav(id) : handleAddFav}
+            style={{ color: "#d63031" }}
             className="edit_delete"
           >
-            {!favToggle ? (
-              <FaRegHeart style={{ color: "red" }} />
-            ) : (
-              <FaHeart style={{ color: "red" }} />
-            )}
+            {!favToggle ? <FaRegHeart /> : <FaHeart />}
           </button>
 
           {/* favorite icons end */}

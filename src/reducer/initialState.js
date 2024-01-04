@@ -1,7 +1,9 @@
+import { getApplyJobFromLocalStorage } from "../utils/getApplyJobFromLocalStorage";
 import { getFavJobFromLocalStorage } from "../utils/getFavJobFromLocalStorage";
 
 const initialState = {
   favJobs: getFavJobFromLocalStorage(),
-  applyedJobs: [],
+  applyedJobs: getApplyJobFromLocalStorage(),
+  updateJob: [],
 };
 export default initialState;

@@ -9,6 +9,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
 import ToggleFavJob from "../../utils/ToggleFavJob";
 import { deleteJob } from "../../utils/deleteJob";
+import { useContext } from "react";
+import { JobContext } from "../../Context/JobContext";
 
 const Job = ({ job, updateData, setUpdateData }) => {
   const [user] = useAuthState(auth);
@@ -29,6 +31,12 @@ const Job = ({ job, updateData, setUpdateData }) => {
     deleteJob(id, updateData, setUpdateData);
   };
 
+  // add apply
+  const { dispatch, addApply } = useContext(JobContext);
+  const handleApplyClick = () => {
+    addApply(dispatch, job);
+    navigate(user ? "/applyJob" : "/signUp");
+  };
   return (
     <div className="post">
       <div
@@ -58,7 +66,7 @@ const Job = ({ job, updateData, setUpdateData }) => {
         <p>{description}</p>
         <div className="buttons">
           <button
-            onClick={() => navigate(user ? "/applyJob" : "/signUp")}
+            onClick={handleApplyClick}
             className="apply__btn"
             title="Apply Now"
           >
@@ -68,7 +76,7 @@ const Job = ({ job, updateData, setUpdateData }) => {
 
           <button
             onClick={favToggle ? () => handleRemoveFav(id) : handleAddFav}
-            style={{ color: "red" }}
+            style={{ color: "#d63031" }}
             className="edit_delete"
           >
             {!favToggle ? <FaRegHeart /> : <FaHeart />}

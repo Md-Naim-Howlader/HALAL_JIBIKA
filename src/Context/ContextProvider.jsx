@@ -11,6 +11,10 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("favJobs", JSON.stringify(state.favJobs));
   }, [state.favJobs]);
+  // set apply job for localstorage
+  useEffect(() => {
+    localStorage.setItem("applyJob", JSON.stringify(state.applyedJobs));
+  }, [state.applyedJobs]);
 
   // provided value
   const values = {
