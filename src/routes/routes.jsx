@@ -1,20 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import NotFound from "../components/ErrorPage/NotFound";
+import FireBaseError from "../components/fireBaseError/FireBaseError";
 import Home from "../Pages/Home/Home";
+import { baseURL } from "../baseURL/baseURL";
+import NotFound from "../components/ErrorPage/NotFound";
 import About from "../Pages/About/About";
 import Jobs from "../Pages/Jobs/Jobs";
-
 import JobDetails from "../Pages/JobDetails/JobDetails";
-import ApplyJob from "../Pages/Applied_A_Job/ApplyJob";
 import PostJob from "../Pages/Post_A_Job/PostJob";
-import SignUp from "../Pages/Auth/SignUp/SignUp";
+import ApplyJob from "../Pages/Applied_A_Job/ApplyJob";
 import FavoriteJob from "../Pages/Favorite/FavoriteJob";
-import FireBaseError from "../components/fireBaseError/FireBaseError";
-import { baseURL } from "../baseURL/baseURL";
 import Update_Job from "../Pages/Update_Job/Update_Job";
 import Contact from "../Pages/Contact/Contact";
-import LogIn from "../Pages/Auth/Login/Login";
+import LogIn from "../Pages/Auth/LogIn/LogIn";
+import SignUp from "../Pages/Auth/SignUp/SignUp";
 
 const routes = createBrowserRouter([
   {
