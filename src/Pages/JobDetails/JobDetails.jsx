@@ -8,7 +8,7 @@ const JobDetails = () => {
   const { logo, companyName, title, position, description } = data;
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
-  console.log(data);
+
   return (
     <>
       <section className={job__details}>

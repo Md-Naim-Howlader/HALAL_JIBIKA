@@ -46,8 +46,12 @@ const SignUp = () => {
   /**************** github signup ends Here ********** */
 
   /**************** createUserWithEmailAndPassword starts Here ********** */
-  const [createUserWithEmailAndPassword, createUserLoading, createUserError] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [
+    createUserWithEmailAndPassword,
+    createUser,
+    createUserLoading,
+    createUserError,
+  ] = useCreateUserWithEmailAndPassword(auth);
   const [updateProfile] = useUpdateProfile(auth);
   /****************  createUserWithEmailAndPassword ends Here ********** */
 
@@ -120,16 +124,16 @@ const SignUp = () => {
     }
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name, photoURL: photo });
-    Swal.fire({
-      icon: "success",
-      title: "Sign Up Successfully",
-      toast: true,
-      position: "bottom-end",
-      showConfirmButton: false,
-      timer: 2000,
-      showCloseButton: true,
-    });
-    navigate("/jobs");
+    // Swal.fire({
+    //   icon: "success",
+    //   title: "Sign Up Successfully",
+    //   toast: true,
+    //   position: "bottom-end",
+    //   showConfirmButton: false,
+    //   timer: 2000,
+    //   showCloseButton: true,
+    // });
+
     // clear form inputs
     e.target.name.value = "";
     e.target.email.value = "";
@@ -146,7 +150,6 @@ const SignUp = () => {
       timer: 2000,
       showCloseButton: true,
     });
-    navigate("/jobs");
   }
   /******************** Loading Handling starts here **************** */
   if (createUserLoading || googleLoading || githubLoading || facebookLoading) {
