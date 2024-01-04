@@ -8,7 +8,6 @@ import Jobs from "../Pages/Jobs/Jobs";
 import JobDetails from "../Pages/JobDetails/JobDetails";
 import ApplyJob from "../Pages/Applied_A_Job/ApplyJob";
 import PostJob from "../Pages/Post_A_Job/PostJob";
-import Login from "../Pages/Auth/Login/Login";
 import SignUp from "../Pages/Auth/SignUp/SignUp";
 import FavoriteJob from "../Pages/Favorite/FavoriteJob";
 import FireBaseError from "../components/fireBaseError/FireBaseError";
