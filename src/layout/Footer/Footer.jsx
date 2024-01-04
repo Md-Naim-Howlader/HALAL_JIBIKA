@@ -35,7 +35,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a>
+              <a href="https://www.twitter.com">
                 <FaXTwitter />
               </a>
             </li>

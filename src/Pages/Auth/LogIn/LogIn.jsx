@@ -44,13 +44,11 @@ const LogIn = () => {
 
   if (user || googleUser || facebooksUser || githubUser) {
     Swal.fire({
+      position: "top center",
       icon: "success",
-      title: "Login Successfully",
-      toast: true,
-      position: "bottom-end",
+      title: "Login Succesfully!",
       showConfirmButton: false,
-      timer: 2000,
-      showCloseButton: true,
+      timer: 1500,
     });
     navigate("jobs");
   }
@@ -111,6 +109,13 @@ const LogIn = () => {
     }
 
     signInWithEmailAndPassword(email, password);
+    Swal.fire({
+      position: "top center",
+      icon: "success",
+      title: "Login Succesfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
 
     navigate("/jobs");
   };

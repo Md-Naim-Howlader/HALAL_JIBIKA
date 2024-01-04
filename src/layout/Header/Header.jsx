@@ -68,7 +68,9 @@ const Header = () => {
       <div className="container">
         <div className="header__items">
           <div className="logo">
-            <img src={logoImg} alt="logo" />
+            <NavLink>
+              <img src={logoImg} alt="logo" />
+            </NavLink>
             <div className="navToggle">
               <button onClick={handleToggle}>
                 {toggle ? <VscChromeClose /> : <FaBars />}
@@ -91,12 +93,7 @@ const Header = () => {
                   Post a Job
                 </NavLink>
               </li>
-              {/* 
-              {userInfo && (
-                <li>
-                  <NavLink to="/applyJob">Applyed Job</NavLink>
-                </li>
-              )} */}
+
               <li>
                 <NavLink to="/about">About</NavLink>
               </li>
