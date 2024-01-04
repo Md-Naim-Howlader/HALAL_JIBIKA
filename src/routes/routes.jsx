@@ -15,6 +15,7 @@ import FireBaseError from "../components/fireBaseError/FireBaseError";
 import { baseURL } from "../baseURL/baseURL";
 import Update_Job from "../Pages/Update_Job/Update_Job";
 import Contact from "../Pages/Contact/Contact";
+import LogIn from "../Pages/Auth/Login/Login";
 
 const routes = createBrowserRouter([
   {
@@ -67,7 +68,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <LogIn />,
         errorElement: <FireBaseError />,
       },
       {
