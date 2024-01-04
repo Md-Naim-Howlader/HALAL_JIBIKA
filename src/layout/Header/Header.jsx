@@ -91,12 +91,12 @@ const Header = () => {
                   Post a Job
                 </NavLink>
               </li>
-
+              {/* 
               {userInfo && (
                 <li>
                   <NavLink to="/applyJob">Applyed Job</NavLink>
                 </li>
-              )}
+              )} */}
               <li>
                 <NavLink to="/about">About</NavLink>
               </li>

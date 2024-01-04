@@ -1,6 +1,3 @@
-export const ADD_JOBS = "ADD_JOBS";
-export const DELETE_JOBS = "DELETE_JOBS";
-
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 

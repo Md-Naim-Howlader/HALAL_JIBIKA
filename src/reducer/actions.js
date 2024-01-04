@@ -1,17 +1,4 @@
-import {
-  ADD_APPLY,
-  ADD_FAVORITE,
-  ADD_JOBS,
-  DELETE_JOBS,
-  REMOVE_FAVORITE,
-} from "./actionsType";
-
-export const addJobs = (dispatch, jobs) => {
-  dispatch({ type: ADD_JOBS, payload: jobs });
-};
-export const deleteJobs = (dispatch, id) => {
-  dispatch({ type: DELETE_JOBS, payload: id });
-};
+import { ADD_APPLY, ADD_FAVORITE, REMOVE_FAVORITE } from "./actionsType";
 
 export const addFavorite = (dispatch, favJob) => {
   dispatch({ type: ADD_FAVORITE, payload: favJob });

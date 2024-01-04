@@ -20,8 +20,8 @@ const Jobs = () => {
           <h2>JOBS</h2>
         </div>
         <div className="job__posts all_jobs">
-          {data &&
-            data.map((job) => (
+          {updateData &&
+            updateData.map((job) => (
               <Job
                 key={job.id}
                 job={job}

@@ -8,7 +8,6 @@ export const deleteJob = (id, data, setData) => {
     Swal.fire({
       title: "Are you want to delete job ?",
       icon: "warning",
-
       showCancelButton: true,
       confirmButtonColor: "#198754",
       cancelButtonColor: "#d33",
@@ -21,7 +20,6 @@ export const deleteJob = (id, data, setData) => {
         Swal.fire({
           title: "Deleted!",
           text: "Your Job has been deleted.",
-
           icon: "success",
         });
       }

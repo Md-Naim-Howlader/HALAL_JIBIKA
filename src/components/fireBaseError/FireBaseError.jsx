@@ -1,14 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import errorImage from "../../assets/image/errorImage.avif";
-const FireBaseError = (errorMessege) => {
+const FireBaseError = () => {
   const naviGate = useNavigate();
 
   return (
     <div style={{ textAlign: "center", padding: "20px 0" }}>
       <img style={{ width: "500px" }} src={errorImage} alt="error" />
-      <h1 style={{ color: "red" }}>
-        Error: {errorMessege.errorMessege.message}
-      </h1>
+      <h1 style={{ color: "red" }}>Firebase Error: Sometging went Wrong !</h1>
       <button
         onClick={() => naviGate(-1)}
         style={{

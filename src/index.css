@@ -78,12 +78,11 @@
 }
 .post__owner_info {
   display: flex;
+  align-items: center;
 }
 .post__owner_info img {
   margin-right: 30px;
   width: 60px;
-  height: auto;
-  border-radius: 50%;
 }
 .post__owner_info .info {
   display: flex;

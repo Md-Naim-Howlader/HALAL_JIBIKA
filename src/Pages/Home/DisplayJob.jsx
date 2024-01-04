@@ -9,9 +9,12 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../firebase/firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { deleteJob } from "../../utils/deleteJob";
+import { useContext } from "react";
+import { JobContext } from "../../Context/JobContext";
 
 const DisplayJob = ({ job, data, setData }) => {
   const { id, title, logo, companyName, position, description } = job;
+  const { dispatch, addApply } = useContext(JobContext);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const handleClick = (id) => {
@@ -25,7 +28,12 @@ const DisplayJob = ({ job, data, setData }) => {
   const handleDeleteJob = (id) => {
     deleteJob(id, data, setData);
   };
+  //handle Apply job
 
+  const handleApplyJob = () => {
+    addApply(dispatch, job);
+    navigate(user ? "/applyJob" : "/signUp");
+  };
   return (
     <div className="post">
       <div
@@ -55,7 +63,7 @@ const DisplayJob = ({ job, data, setData }) => {
         <p>{description}</p>
         <div className="buttons">
           <button
-            onClick={() => navigate(user ? "/applyJob" : "/signUp")}
+            onClick={handleApplyJob}
             className="apply__btn"
             title="Apply Now"
           >
