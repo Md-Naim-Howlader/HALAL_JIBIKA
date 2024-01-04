@@ -5,7 +5,6 @@ import Home from "../Pages/Home/Home";
 import About from "../Pages/About/About";
 import Jobs from "../Pages/Jobs/Jobs";
 
-import Contact from "../Pages/Contact/Contact";
 import JobDetails from "../Pages/JobDetails/JobDetails";
 import ApplyJob from "../Pages/Applied_A_Job/ApplyJob";
 import PostJob from "../Pages/Post_A_Job/PostJob";
@@ -15,6 +14,7 @@ import FavoriteJob from "../Pages/Favorite/FavoriteJob";
 import FireBaseError from "../components/fireBaseError/FireBaseError";
 import { baseURL } from "../baseURL/baseURL";
 import Update_Job from "../Pages/Update_Job/Update_Job";
+import Contact from "../Pages/Contact/Contact";
 
 const routes = createBrowserRouter([
   {
