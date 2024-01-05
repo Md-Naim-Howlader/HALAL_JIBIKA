@@ -3,8 +3,10 @@ import { post_form } from "./post.module.css";
 import axios from "axios";
 
 import { baseURL } from "../../baseURL/baseURL";
+import { useNavigate } from "react-router-dom";
 
 const PostJob = () => {
+  const navigate = useNavigate();
   // handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -97,6 +99,7 @@ const PostJob = () => {
           timer: 2000,
           showCloseButton: true,
         });
+        navigate(-1);
       })
       .catch(function (err) {
         console.log(err);

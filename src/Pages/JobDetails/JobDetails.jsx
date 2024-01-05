@@ -1,16 +1,23 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { job__details } from "./jobDetails.module.css";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
+import { baseURL } from "../../baseURL/baseURL";
+import useFetch from "../../Hooks/useFetch";
+import NotFound from "../../components/ErrorPage/NotFound";
+import Loading from "../../components/Loading/Loading";
 const JobDetails = () => {
-  const data = useLoaderData();
-  const { logo, companyName, title, position, description } = data;
+  const { postId } = useParams();
+  const { jobs, isError, isLoading } = useFetch(`${baseURL}/${postId}`);
+  const { logo, companyName, title, position, description } = jobs;
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
   return (
     <>
+      {isError && <NotFound />}
+      {isLoading && <Loading />}
       <section className={job__details}>
         <button
           onClick={() => navigate(-1)}
@@ -46,45 +53,60 @@ const JobDetails = () => {
             <p>
               <span>Job Type:</span> Full-time
             </p>
-            <p>
-              <span>About Us:</span> <br /> Our {companyName} Company is a
-              dynamic and growing tech firm dedicated to providing innovative
-              solutions in the field of IT Sector . We take pride in our
-              commitment to delivering high-quality products and services while
-              fostering a collaborative and inclusive work environment.
-            </p>
-            <p>
+            <div>
+              <span>About Us:</span>
+              <p>
+                Our {companyName} Company is a dynamic and growing tech firm
+                dedicated to providing innovative solutions in the field of IT
+                Sector . We take pride in our commitment to delivering
+                high-quality products and services while fostering a
+                collaborative and inclusive work environment.
+              </p>
+            </div>
+            <div>
               <span>Job Description: </span>
-              <br /> We are currently seeking a talented {position}
-              {title} to join our passionate team. The ideal candidate will have
-              a solid understanding of both front-end and back-end technologies,
-              excellent problem-solving skills, and a passion for creating
-              seamless and intuitive user experiences.
-            </p>
-            <p>
+              <p>
+                We are currently seeking a talented {position}
+                {title} to join our passionate team. The ideal candidate will
+                have a solid understanding of both front-end and back-end
+                technologies, excellent problem-solving skills, and a passion
+                for creating seamless and intuitive user experiences.
+              </p>
+            </div>
+            <div>
               <span>Responsibilities: </span> <br />
               <ul>
                 <li>
-                  Collaborate with cross-functional teams to design, develop,
-                  and implement new features and enhancements.
+                  <p>
+                    Collaborate with cross-functional teams to design, develop,
+                    and implement new features and enhancements.
+                  </p>
                 </li>
                 <li>
-                  Write clean, efficient, and maintainable code across the full
-                  stack.
+                  <p>
+                    Write clean, efficient, and maintainable code across the
+                    full stack.
+                  </p>
                 </li>
                 <li>
-                  Conduct thorough testing to ensure the reliability and
-                  security of applications.
+                  <p>
+                    Conduct thorough testing to ensure the reliability and
+                    security of applications.
+                  </p>
                 </li>
                 <li>
-                  Stay updated on industry trends and contribute to continuous
-                  improvement initiatives.
+                  <p>
+                    Stay updated on industry trends and contribute to continuous
+                    improvement initiatives.
+                  </p>
                 </li>
                 <li>
-                  Provide technical support and troubleshooting as needed.
+                  <p>
+                    Provide technical support and troubleshooting as needed.
+                  </p>
                 </li>
               </ul>
-            </p>
+            </div>
             <p>
               <span>Benefits:</span> <br />
               <ul>

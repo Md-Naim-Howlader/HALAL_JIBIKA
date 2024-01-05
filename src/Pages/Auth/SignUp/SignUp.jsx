@@ -125,15 +125,13 @@ const SignUp = () => {
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name, photoURL: photo });
     Swal.fire({
+      position: "top center",
       icon: "success",
-      title: "Sign Up Successfully",
-      toast: true,
-      position: "bottom-end",
+      title: "Sign Up Successfully!",
       showConfirmButton: false,
-      timer: 2000,
-      showCloseButton: true,
+      timer: 1500,
     });
-
+    navigate(-1);
     // clear form inputs
     e.target.name.value = "";
     e.target.email.value = "";
@@ -142,14 +140,13 @@ const SignUp = () => {
   };
   if (createUser || googleUser || facebooksUser || githubUser) {
     Swal.fire({
+      position: "top center",
       icon: "success",
-      title: "Sign Up Successfully",
-      toast: true,
-      position: "bottom-end",
+      title: "Sign Up Successfully!",
       showConfirmButton: false,
-      timer: 2000,
-      showCloseButton: true,
+      timer: 1500,
     });
+    navigate(-1);
   }
   /******************** Loading Handling starts here **************** */
   if (createUserLoading || googleLoading || githubLoading || facebookLoading) {

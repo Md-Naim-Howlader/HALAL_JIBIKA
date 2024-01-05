@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import FireBaseError from "../components/fireBaseError/FireBaseError";
 import Home from "../Pages/Home/Home";
-import { baseURL } from "../baseURL/baseURL";
+// import { baseURL } from "../baseURL/baseURL";
 import NotFound from "../components/ErrorPage/NotFound";
 import About from "../Pages/About/About";
 import Jobs from "../Pages/Jobs/Jobs";
@@ -24,7 +24,6 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch(baseURL),
         errorElement: <NotFound />,
       },
       {
@@ -34,13 +33,11 @@ const routes = createBrowserRouter([
       {
         path: "/jobs",
         element: <Jobs />,
-        loader: () => fetch(baseURL),
         errorElement: <NotFound />,
       },
       {
         path: "/jobs/:postId",
         element: <JobDetails />,
-        loader: ({ params }) => fetch(`${baseURL}/${params.postId}`),
         errorElement: <NotFound />,
       },
       {

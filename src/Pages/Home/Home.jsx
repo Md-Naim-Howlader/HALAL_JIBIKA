@@ -2,16 +2,18 @@ import "./home.css";
 import DisplayJob from "./DisplayJob";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { JobContext } from "../../Context/JobContext";
+import NotFound from "../../components/ErrorPage/NotFound";
+import Loading from "../../components/Loading/Loading";
 
 const Home = () => {
-  const jobs = useLoaderData();
-  // set data (jobs) for state
-  const [data, setData] = useState(jobs);
+  const { jobs, isLoading, isError } = useContext(JobContext);
+
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -30,10 +32,11 @@ const Home = () => {
     }
   };
 
-  // useEffect
+  const [data, setData] = useState(jobs);
+
   useEffect(() => {
-    setData(data);
-  }, [data]);
+    setData(jobs);
+  }, [jobs]);
 
   return (
     <section className="hero__section">
@@ -59,9 +62,11 @@ const Home = () => {
             <span>Latest Jobs</span>
             <h2>Latest Jobs</h2>
           </div>
+          {isError && <NotFound />}
+          {isLoading && <Loading />}
           <div className="job__posts">
-            {data &&
-              data
+            {jobs &&
+              jobs
                 .slice(0, 5)
                 .map((job) => (
                   <DisplayJob

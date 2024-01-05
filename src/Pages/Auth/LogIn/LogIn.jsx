@@ -50,7 +50,7 @@ const LogIn = () => {
       showConfirmButton: false,
       timer: 1500,
     });
-    navigate("jobs");
+    navigate(-1);
   }
   /******************** Loading Handling starts here **************** */
   if (userLoading || googleLoading || githubLoading || facebookLoading) {
@@ -117,7 +117,7 @@ const LogIn = () => {
       timer: 1500,
     });
 
-    navigate("/jobs");
+    navigate(-1);
   };
 
   return (

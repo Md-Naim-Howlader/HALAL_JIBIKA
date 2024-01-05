@@ -8,10 +8,14 @@ import {
   addApply,
   addUpdate,
 } from "../reducer/actions";
+import useFetch from "../Hooks/useFetch";
+import { baseURL } from "../baseURL/baseURL";
 
 const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // get data
+  const { jobs, isError, isLoading } = useFetch(baseURL);
   // set Favorte job for localstorage
   useEffect(() => {
     localStorage.setItem("favJobs", JSON.stringify(state.favJobs));
@@ -28,6 +32,9 @@ const ContextProvider = ({ children }) => {
   // provided value
   const values = {
     state,
+    jobs,
+    isError,
+    isLoading,
     favJobs: state.favJobs,
     applyedJobs: state.applyedJobs,
     editJob: state.editedJob,

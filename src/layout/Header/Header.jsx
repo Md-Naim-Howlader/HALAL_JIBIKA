@@ -42,13 +42,11 @@ const Header = () => {
   const handleSignOut = () => {
     signOut();
     Swal.fire({
+      position: "top center",
       icon: "success",
-      title: "Log Out Successfully",
-      toast: true,
-      position: "bottom-end",
+      title: "Sign Out Succesfully!",
       showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
+      timer: 1500,
     });
     navigate("/");
   };
@@ -115,7 +113,7 @@ const Header = () => {
                     style={{ background: "black" }}
                     onClick={handleSignOut}
                   >
-                    <BiLogOut /> Log Out
+                    <BiLogOut /> Sign Out
                   </button>
                 ) : (
                   <button onClick={() => navigate("/login")}>

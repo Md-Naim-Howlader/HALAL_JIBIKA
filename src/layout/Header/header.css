@@ -60,9 +60,27 @@
   color: #5f687b;
   font-family: "Raleway", sans-serif;
   font-weight: 600;
+  position: relative;
 }
-.header__items nav ul li a.active {
+.header__items nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 23px;
+  height: 3px;
+  border-radius: 5px;
+  width: 0;
+  background: #198754;
+  transition: all 0.3s ease-in-out;
+}
+.header__items nav ul li:hover a::after {
+  width: 100%;
+}
+.header__items nav ul li a.active,
+.header__items nav ul li a.active::after {
   color: #198754;
+  font-weight: bold;
+  width: 100%;
 }
 .header__items nav ul li a:hover,
 .header__items nav ul li a:focus,

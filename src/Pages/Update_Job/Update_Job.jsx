@@ -4,7 +4,9 @@ import { update_form } from "./updateJob.module.css";
 import axios from "axios";
 import { baseURL } from "../../baseURL/baseURL";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const Update_Job = () => {
+  const navigate = useNavigate();
   // get editJob using context api
   const { editJob } = useContext(JobContext);
 
@@ -64,6 +66,7 @@ const Update_Job = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate(-1);
       setCompany("");
       setCompanyLogo("");
       setJobTitle("");
