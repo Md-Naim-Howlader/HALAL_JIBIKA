@@ -3,7 +3,7 @@ import { baseURL } from "../baseURL/baseURL";
 
 import Swal from "sweetalert2";
 
-export const deleteJob = (id, data, setData) => {
+export const deleteJob = (id, setIsUpdatingDB) => {
   try {
     Swal.fire({
       title: "Are you want to delete job ?",
@@ -15,8 +15,8 @@ export const deleteJob = (id, data, setData) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios.delete(`${baseURL}/${id}`);
+        setIsUpdatingDB((prevState) => !prevState);
 
-        setData(data.filter((item) => item.id !== id));
         Swal.fire({
           title: "Deleted!",
           text: "Your Job has been deleted.",

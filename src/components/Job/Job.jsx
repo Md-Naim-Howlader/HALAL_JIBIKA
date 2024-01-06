@@ -12,7 +12,7 @@ import { deleteJob } from "../../utils/deleteJob";
 import { useContext } from "react";
 import { JobContext } from "../../Context/JobContext";
 
-const Job = ({ job, updateData, setUpdateData }) => {
+const Job = ({ job, setIsUpdatingDB }) => {
   const [user] = useAuthState(auth);
   // destucture job
   const { id, title, logo, companyName, position, description } = job;
@@ -28,7 +28,7 @@ const Job = ({ job, updateData, setUpdateData }) => {
 
   // handle delete job
   const handleDeleteJob = (id) => {
-    deleteJob(id, updateData, setUpdateData);
+    deleteJob(id, setIsUpdatingDB);
   };
 
   // add apply
@@ -42,6 +42,7 @@ const Job = ({ job, updateData, setUpdateData }) => {
   const handleUpdateJob = () => {
     addUpdate(dispatch, job);
     navigate(user ? "/updateJob" : "/signUp");
+    setIsUpdatingDB((prevState) => !prevState);
   };
   return (
     <div className="post">

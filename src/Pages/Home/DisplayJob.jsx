@@ -12,9 +12,10 @@ import { deleteJob } from "../../utils/deleteJob";
 import { useContext } from "react";
 import { JobContext } from "../../Context/JobContext";
 
-const DisplayJob = ({ job, data, setData }) => {
+const DisplayJob = ({ job }) => {
   const { id, title, logo, companyName, position, description } = job;
-  const { dispatch, addApply, addUpdate } = useContext(JobContext);
+  const { dispatch, addApply, addUpdate, setIsUpdatingDB } =
+    useContext(JobContext);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const handleClick = (id) => {
@@ -26,7 +27,7 @@ const DisplayJob = ({ job, data, setData }) => {
   const { favToggle, handleAddFav, handleRemoveFav } = ToggleFavJob(job);
 
   const handleDeleteJob = (id) => {
-    deleteJob(id, data, setData);
+    deleteJob(id, setIsUpdatingDB);
   };
   //handle Apply job
 
@@ -38,6 +39,7 @@ const DisplayJob = ({ job, data, setData }) => {
   // handle update job
   const handleUpdateJob = () => {
     addUpdate(dispatch, job);
+    setIsUpdatingDB((prevState) => !prevState);
     navigate(user ? "/updateJob" : "/signUp");
   };
   return (

@@ -4,17 +4,22 @@ import axios from "axios";
 
 import { baseURL } from "../../baseURL/baseURL";
 import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { JobContext } from "../../Context/JobContext";
 
 const PostJob = () => {
   const navigate = useNavigate();
+  const { setIsUpdatingDB } = useContext(JobContext);
   // handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    const companyName = e.target.companyName.value.trim();
-    const companyLogo = e.target.companyLogo.value.trim();
-    const jobTitle = e.target.jobTitle.value.trim();
-    const position = e.target.position.value.trim();
-    const description = e.target.description.value.trim();
+    const formData = {};
+    new FormData(e.currentTarget).forEach((value, key) => {
+      formData[key] = value.trim();
+    });
+
+    const { companyName, companyLogo, jobTitle, position, description } =
+      formData;
 
     // form validation
     if (companyName.length < 2) {
@@ -69,7 +74,7 @@ const PostJob = () => {
     if (description.length < 10) {
       Swal.fire({
         icon: "warning",
-        title: "Description must be at least 3 characters.",
+        title: "Description must be at least 10 characters.",
         toast: true,
         position: "top-end",
         showConfirmButton: false,
@@ -85,7 +90,6 @@ const PostJob = () => {
         logo: companyLogo,
         position: position,
         title: jobTitle,
-
         id: new Date().getTime(),
         description: description,
       })
@@ -99,6 +103,7 @@ const PostJob = () => {
           timer: 2000,
           showCloseButton: true,
         });
+        setIsUpdatingDB((prevState) => !prevState);
         navigate(-1);
       })
       .catch(function (err) {
@@ -114,12 +119,12 @@ const PostJob = () => {
         });
       });
 
-    e.target.companyName.value = "";
-    e.target.companyLogo.value = "";
-    e.target.jobTitle.value = "";
-    e.target.position.value = "";
-    e.target.description.value = "";
+    e.currentTarget.reset();
   };
+
+  useEffect(() => {
+    setIsUpdatingDB((prevState) => !prevState);
+  });
 
   return (
     <section>

@@ -28,7 +28,10 @@ const Favorite = ({ fav }) => {
           <h3>{title}</h3>
           <span>Job Position: {position}</span>
           <p>{description}</p>
-          <div className="buttons">
+          <div
+            style={{ display: "flex", justifyContent: "space-between" }}
+            className="buttons"
+          >
             <button className="apply__btn" title="Apply Now">
               Apply Now
             </button>

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Update_Job = () => {
   const navigate = useNavigate();
   // get editJob using context api
-  const { editJob } = useContext(JobContext);
+  const { editJob, setIsUpdatingDB } = useContext(JobContext);
 
   // destucture editjob
   const { id, title, logo, companyName, position, description } = editJob[0];
@@ -66,12 +66,14 @@ const Update_Job = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate(-1);
+
       setCompany("");
       setCompanyLogo("");
       setJobTitle("");
       setJobPosition("");
       setDescription("");
+      setIsUpdatingDB((prevState) => !prevState);
+      navigate(-1);
     } catch (error) {
       Swal.fire({
         position: "top center",
