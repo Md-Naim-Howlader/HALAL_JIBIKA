@@ -83,11 +83,11 @@ const Header = () => {
               </li>
 
               <li>
-                <NavLink to={userInfo ? "/jobs" : "/signUp"}>Jobs</NavLink>
+                <NavLink to={userInfo ? "/jobs" : "/login"}>Jobs</NavLink>
               </li>
 
               <li>
-                <NavLink to={userInfo ? "/postJob" : "/signUp"}>
+                <NavLink to={userInfo ? "/postJob" : "/login"}>
                   Post a Job
                 </NavLink>
               </li>
@@ -126,7 +126,7 @@ const Header = () => {
                 <span>{favJobs.length > 0 ? favJobs.length : ""}</span>
               </li>
               <li>
-                <button onClick={() => navigate("/signUp")} className="userBtn">
+                <button onClick={() => navigate("/login")} className="userBtn">
                   {userInfo?.photoURL ? (
                     <img className="userImg" src={userInfo?.photoURL} />
                   ) : (

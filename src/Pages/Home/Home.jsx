@@ -19,14 +19,14 @@ const Home = () => {
 
   const handleExplore = () => {
     if (!user) {
-      navigate("/signUp");
+      navigate("/login");
     } else {
       navigate("/jobs");
     }
   };
   const handleAllJobs = () => {
     if (!user) {
-      navigate("/signUp");
+      navigate("/login");
     } else {
       navigate("/jobs");
     }
