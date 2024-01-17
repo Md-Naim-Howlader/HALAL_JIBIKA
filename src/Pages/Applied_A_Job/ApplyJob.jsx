@@ -14,7 +14,6 @@ const ApplyJob = () => {
         companyName: "",
         position: "",
       };
-  console.log(applyedJobs);
 
   const handleSubmit = (e) => {
     e.preventDefault();

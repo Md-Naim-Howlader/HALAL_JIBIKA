@@ -121,7 +121,7 @@ const Header = () => {
                   </button>
                 )}
               </li>
-              <li className="fav">
+              <li className="fav ">
                 <button onClick={() => navigate("/favorite")}>Favorite</button>
                 <span>{favJobs.length > 0 ? favJobs.length : ""}</span>
               </li>

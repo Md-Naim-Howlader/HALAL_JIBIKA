@@ -119,6 +119,12 @@
 .navBar ul .fav button {
   background: #198754;
 }
+.navBar ul .fav button:focus,
+.navBar ul .fav button.active,
+.navBar ul .fav button:active {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
 .navBar ul li.fav span {
   display: inline-block;
   background: #dc3545;

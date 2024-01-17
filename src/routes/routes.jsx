@@ -54,6 +54,11 @@ const routes = createBrowserRouter([
         element: <FavoriteJob />,
       },
       {
+        path: "/favorite/:postId",
+        element: <JobDetails />,
+        errorElement: <NotFound />,
+      },
+      {
         path: "/updateJob",
         element: <Update_Job />,
       },

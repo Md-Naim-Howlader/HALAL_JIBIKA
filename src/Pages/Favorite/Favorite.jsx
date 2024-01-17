@@ -1,9 +1,12 @@
-// import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import ToggleFavJob from "../../utils/ToggleFavJob";
 const Favorite = ({ fav }) => {
   const { id, title, logo, companyName, position, description } = fav;
   const { favToggle, handleRemoveFav } = ToggleFavJob(fav);
-
+  const navigate = useNavigate();
+  const showDetails = () => {
+    navigate(`/favorite/${id}`);
+  };
   return (
     <div>
       <div className="post">
@@ -20,7 +23,7 @@ const Favorite = ({ fav }) => {
               <h4>{companyName}</h4>
             </div>
           </div>
-          <button className="btn" title="Show Details">
+          <button onClick={showDetails} className="btn" title="Show Details">
             Show Details
           </button>
         </div>
@@ -32,7 +35,11 @@ const Favorite = ({ fav }) => {
             style={{ display: "flex", justifyContent: "space-between" }}
             className="buttons"
           >
-            <button className="apply__btn" title="Apply Now">
+            <button
+              onClick={() => navigate("/applyJob")}
+              className="apply__btn"
+              title="Apply Now"
+            >
               Apply Now
             </button>
 

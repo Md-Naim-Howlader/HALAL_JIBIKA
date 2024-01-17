@@ -13,7 +13,7 @@ const JobDetails = () => {
   const { logo, companyName, title, position, description } = jobs;
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
-
+  console.log(postId);
   return (
     <>
       {isError && <NotFound />}
