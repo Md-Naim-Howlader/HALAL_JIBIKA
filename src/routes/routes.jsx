@@ -66,17 +66,17 @@ const routes = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      {
-        path: "/login",
-        element: <LogIn />,
-        errorElement: <FireBaseError />,
-      },
-      {
-        path: "/signUp",
-        element: <SignUp />,
-        errorElement: <FireBaseError />,
-      },
     ],
+  },
+  {
+    path: "/login",
+    element: <LogIn />,
+    errorElement: <FireBaseError />,
+  },
+  {
+    path: "/signUp",
+    element: <SignUp />,
+    errorElement: <FireBaseError />,
   },
   {
     path: "*",
