@@ -35,13 +35,13 @@ const Job = ({ job, setIsUpdatingDB }) => {
 
   const handleApplyClick = () => {
     addApply(dispatch, job);
-    navigate(user ? "/applyJob" : "/signUp");
+    navigate(user ? "/applyJob" : "/login");
   };
 
   // updatejob
   const handleUpdateJob = () => {
     addUpdate(dispatch, job);
-    navigate(user ? "/updateJob" : "/signUp");
+    navigate(user ? "/updateJob" : "/login");
     setIsUpdatingDB((prevState) => !prevState);
   };
   return (
