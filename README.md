@@ -21,9 +21,10 @@ clone my json server
   npm i
   npm start
 ```
-Install my-project with npm
+Install my-project with yarn
 
 ```bash
+  cd my project
   yarn Install
   yarn dev
 ```
