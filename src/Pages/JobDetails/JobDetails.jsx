@@ -132,7 +132,7 @@ const JobDetails = () => {
             </p>
             <div className="buttons">
               <button
-                onClick={() => navigate(user ? "/applyJob" : "/signUp")}
+                onClick={() => navigate(user ? "/applyJob" : "/login")}
                 style={{ padding: "10px 50px" }}
                 className="apply__btn"
                 title="Apply Now"
