@@ -29,11 +29,11 @@ const About = () => {
               </div>
               <div className="achivement">
                 <h2>162M+</h2>
-                <p>job seekers have used HALAL JIBIKA</p>
+                <p>job seekers have used JobNexify</p>
               </div>
               <div className="achivement">
                 <h2>3.8M+</h2>
-                <p>businesses have used HALAL JIBIKA</p>
+                <p>businesses have used JobNexify</p>
               </div>
               <div className="achivement">
                 <h2>#1</h2>

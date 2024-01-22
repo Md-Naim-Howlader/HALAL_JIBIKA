@@ -14,9 +14,18 @@ const Footer = () => {
         <div className="logo">
           <img src={logo} alt="logo" />
           <p>
-            Unlock Your Career Potential – Your Gateway to Opportunities. HALAL
-            JIBIKA - Connecting Talent with Opportunities, Building Futures
-            Together.
+            Unlock Your Career Potential – Your Gateway to Opportunities.{" "}
+            <a
+              style={{
+                color: "#198754",
+                textDecoration: "none",
+                fontWeight: "bold",
+              }}
+              href="https://www.jobnexify.com"
+            >
+              JobNexify
+            </a>{" "}
+            - Connecting Talent with Opportunities, Building Futures Together.
           </p>
           <ul>
             <li>
@@ -165,7 +174,20 @@ const Footer = () => {
         </div>
       </div>
       <div className="container foter__copyright">
-        <p>Copyright &copy; HALAL JIBIKA 2024. All Rights Reserved.</p>
+        <p>
+          Copyright &copy;{" "}
+          <a
+            style={{
+              color: "#198754",
+              textDecoration: "none",
+              fontWeight: "bold",
+            }}
+            href="https://www.jobnexify.com"
+          >
+            JobNexify
+          </a>{" "}
+          2024. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );
