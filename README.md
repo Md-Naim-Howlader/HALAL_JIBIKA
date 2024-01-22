@@ -3,14 +3,15 @@
 
 
 ## Features
- -Read Job
+
+- Read job
 - Add job
 - Edit job
 - Update job
 - Delete job
 
 ## Live Link
-https://halal-jibika-alpha.vercel.app/
+https://jobnexify.vercel.app/
 
 ## Installation
 clone my json server
