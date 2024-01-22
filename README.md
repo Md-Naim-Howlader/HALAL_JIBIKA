@@ -1,15 +1,13 @@
-# React Todo App
+# JobNexify (job portal site)
 
 
 
 ## Features
-
-- Create Todo
-- Add Todo
-- Edit Todo
-- Update Todo
-- Delete Todo
-- Store Todo LocalStorage
+ -Read Job
+- Add job
+- Edit job
+- Update job
+- Delete job
 
 ## Live Link
 https://halal-jibika-alpha.vercel.app/
