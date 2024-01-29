@@ -4,9 +4,11 @@ import "./jobs.css";
 import { JobContext } from "../../Context/JobContext";
 import NotFound from "../../components/ErrorPage/NotFound";
 import Loading from "../../components/Loading/Loading";
+import SearchJobs from "../Search_jobs/SearchJobs";
 
 const Jobs = () => {
-  const { jobs, isLoading, isError, setIsUpdatingDB } = useContext(JobContext);
+  const { filterdJobs, isLoading, isError, setIsUpdatingDB } =
+    useContext(JobContext);
 
   return (
     <section>
@@ -15,11 +17,13 @@ const Jobs = () => {
           <span>JOBS</span>
           <h2>JOBS</h2>
         </div>
+        <SearchJobs />
         {isError && <NotFound />}
         {isLoading && <Loading />}
+
         <div className="job__posts all_jobs">
-          {jobs &&
-            jobs.map((job) => (
+          {filterdJobs &&
+            filterdJobs.map((job) => (
               <Job setIsUpdatingDB={setIsUpdatingDB} key={job.id} job={job} />
             ))}
         </div>

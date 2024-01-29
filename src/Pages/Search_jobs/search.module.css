@@ -1,0 +1,26 @@
+.searchContainer {
+  text-align: center;
+}
+.searchContainer input {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background: #fff;
+  border: 2px solid rgb(192, 208, 208);
+  font-size: 18px;
+  border-radius: 6px;
+  resize: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.searchContainer input:focus {
+  border-color: #86b7fe;
+  color: #212529;
+  background: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}

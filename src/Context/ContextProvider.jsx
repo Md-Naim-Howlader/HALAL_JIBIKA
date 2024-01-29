@@ -15,7 +15,14 @@ const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // get data
-  const { jobs, isError, isLoading, setIsUpdatingDB } = useFetch(baseURL);
+  const {
+    handleSearch,
+    filterdJobs,
+    jobs,
+    isError,
+    isLoading,
+    setIsUpdatingDB,
+  } = useFetch(baseURL);
   // set Favorte job for localstorage
   useEffect(() => {
     localStorage.setItem("favJobs", JSON.stringify(state.favJobs));
@@ -29,6 +36,7 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("editData", JSON.stringify(state.editedJob));
   }, [state.editedJob]);
+
   // provided value
   const values = {
     state,
@@ -44,6 +52,8 @@ const ContextProvider = ({ children }) => {
     addApply,
     addUpdate,
     setIsUpdatingDB,
+    handleSearch,
+    filterdJobs,
   };
   return <JobContext.Provider value={values}>{children}</JobContext.Provider>;
 };
