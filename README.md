@@ -5,6 +5,7 @@
 ## Features
 
 - Read job
+- Search Jobs
 - Add job
 - Edit job
 - Update job
