@@ -25,13 +25,11 @@ const Home = () => {
     }
   };
   const handleAllJobs = () => {
-    // if (!user) {
-    //   navigate("/login");
-    // } else {
-    //   navigate("/jobs");
-    // }
-
-    navigate("/jobs");
+    if (!user) {
+      navigate("/login");
+    } else {
+      navigate("/jobs");
+    }
   };
 
   return (
