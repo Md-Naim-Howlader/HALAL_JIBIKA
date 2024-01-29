@@ -6,6 +6,7 @@ const useFetch = (url) => {
   const [filterdJobs, setFilterdJobs] = useState(jobs);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
+  const [isUpdatingDB, setIsUpdatingDB] = useState(false);
 
   const fetchData = async (url) => {
     try {
@@ -34,12 +35,13 @@ const useFetch = (url) => {
 
   useEffect(() => {
     fetchData(url);
-  }, [url]);
-  console.log(filterdJobs);
+  }, [url, isUpdatingDB]);
+
   return {
     jobs,
     isLoading,
     isError,
+    setIsUpdatingDB,
     handleSearch,
     filterdJobs,
   };

@@ -7,6 +7,7 @@
   padding: 20px;
   border-radius: 12px;
   font-family: "Poppins", sans-serif;
+  position: relative;
 }
 
 .update_form form input,
@@ -54,4 +55,11 @@
 }
 .update_form form button:hover {
   background: #146d43;
+}
+
+/* loading div */
+.loadingDiv {
+  position: absolute;
+  left: 45%;
+  top: 297px;
 }

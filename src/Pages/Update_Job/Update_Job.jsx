@@ -1,15 +1,16 @@
 import { useContext, useState } from "react";
 import { JobContext } from "../../Context/JobContext";
-import { update_form } from "./updateJob.module.css";
 import axios from "axios";
 import { baseURL } from "../../baseURL/baseURL";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
+import { update_form, loadingDiv } from "./updateJob.module.css";
 const Update_Job = () => {
   const navigate = useNavigate();
   // get editJob using context api
   const { editJob, setIsUpdatingDB } = useContext(JobContext);
-
+  const [loading, setLoading] = useState(false);
   // destucture editjob
   const { id, title, logo, companyName, position, description } = editJob[0];
 
@@ -47,6 +48,7 @@ const Update_Job = () => {
 
   // submit handler
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     let newUpdateJob = {
       title: jobTitle,
@@ -58,7 +60,7 @@ const Update_Job = () => {
 
     try {
       await axios.put(`${baseURL}/${id}`, newUpdateJob);
-
+      setLoading(false);
       Swal.fire({
         position: "top center",
         icon: "success",
@@ -75,10 +77,11 @@ const Update_Job = () => {
       setIsUpdatingDB((prevState) => !prevState);
       navigate(-1);
     } catch (error) {
+      setLoading(false);
       Swal.fire({
         position: "top center",
         icon: "warning",
-        title: "Job Update Unsuccessful",
+        title: "Job Update Unsuccessful:",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -95,7 +98,6 @@ const Update_Job = () => {
         <div className="contact_info_form_container">
           <div className="update_form">
             <div className="container">
-              <div></div>
               <div style={{ padding: "50px 0" }}>
                 <div className={update_form}>
                   <form onSubmit={handleSubmit}>
@@ -156,6 +158,12 @@ const Update_Job = () => {
                   </form>
                 </div>
               </div>
+              {loading && (
+                <div className={loadingDiv}>
+                  {" "}
+                  <Loading />
+                </div>
+              )}
             </div>
           </div>
         </div>
