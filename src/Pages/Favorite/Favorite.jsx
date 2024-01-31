@@ -24,7 +24,7 @@ const Favorite = ({ fav }) => {
             </div>
           </div>
           <button onClick={showDetails} className="btn" title="Show Details">
-            Show Details
+            Details
           </button>
         </div>
         <div className="post__body">

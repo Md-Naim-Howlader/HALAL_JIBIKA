@@ -12,6 +12,7 @@ export const deleteJob = (id, setIsUpdatingDB) => {
       confirmButtonColor: "#198754",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete Job!",
+
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios.delete(`${baseURL}/${id}`);

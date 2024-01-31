@@ -64,7 +64,7 @@ const Job = ({ job, setIsUpdatingDB }) => {
           className="btn"
           title="Show Details"
         >
-          Show Details
+          Details
         </button>
       </div>
       <div className="post__body">

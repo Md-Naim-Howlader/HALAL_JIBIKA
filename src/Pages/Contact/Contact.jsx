@@ -60,13 +60,11 @@ const Contact = () => {
     }
 
     Swal.fire({
+      position: "top center",
       icon: "success",
       title: "Message Sent Successfully",
-      toast: true,
-      position: "top center",
       showConfirmButton: false,
-      timer: 2000,
-      showCloseButton: true,
+      timer: 1500,
     });
 
     e.target.name.value = "";

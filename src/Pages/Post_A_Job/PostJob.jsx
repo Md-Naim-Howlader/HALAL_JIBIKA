@@ -95,27 +95,23 @@ const PostJob = () => {
       })
       .then(function () {
         Swal.fire({
-          icon: "success",
-          title: "Job Post Successfully",
-          toast: true,
           position: "top center",
+          icon: "success",
+          title: "Job Post Succesfully!",
           showConfirmButton: false,
-          timer: 2000,
-          showCloseButton: true,
+          timer: 1500,
         });
+
         setIsUpdatingDB((prevState) => !prevState);
         navigate(-1);
       })
-      .catch(function (err) {
-        console.log(err);
+      .catch(function () {
         Swal.fire({
+          position: "top center",
           icon: "warning",
           title: "Job Post Unsuccessful!",
-          toast: true,
-          position: "top center",
           showConfirmButton: false,
-          timer: 2000,
-          showCloseButton: true,
+          timer: 1500,
         });
       });
 

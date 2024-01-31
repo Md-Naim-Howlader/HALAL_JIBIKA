@@ -64,7 +64,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
-  grid-gap: 25px;
+  grid-gap: 20px;
 }
 .job__posts .post {
   background: #ffffff;
@@ -151,7 +151,7 @@
 
 @media screen and (max-width: 992px) {
   .container {
-    padding: 0 15px;
+    padding: 0 10px;
   }
   .job__posts {
     grid-template-columns: repeat(2, 1fr);
@@ -162,7 +162,7 @@
     grid-template-columns: 1fr;
   }
 }
-/* 
+/*
 font-family: 'Jost', sans-serif;
 font-family: 'Poppins', sans-serif;
 font-family: 'Raleway', sans-serif;

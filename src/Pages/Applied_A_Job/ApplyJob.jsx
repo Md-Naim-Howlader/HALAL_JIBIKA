@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { applyed__form } from "./applyJob.module.css";
 import { JobContext } from "../../Context/JobContext";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const ApplyJob = () => {
   const { applyedJobs } = useContext(JobContext);
-
+  const navigate = useNavigate();
   const { title, logo, companyName, position } = applyedJobs[0]
     ? applyedJobs[0]
     : {
@@ -33,6 +34,7 @@ const ApplyJob = () => {
         timer: 2000,
         showCloseButton: true,
       });
+
       return false;
     }
     if (!/^\S+@\S+\.\S+$/.test(email)) {
@@ -59,17 +61,14 @@ const ApplyJob = () => {
       });
       return false;
     }
-
     Swal.fire({
-      icon: "success",
-      title: "Apply has been Submited",
-      toast: true,
       position: "top center",
+      icon: "success",
+      title: "Apply Submit Succesfully!",
       showConfirmButton: false,
-      timer: 2000,
-      showCloseButton: true,
+      timer: 1500,
     });
-
+    navigate(-1);
     e.target.name.value = "";
     e.target.email.value = "";
     e.target.photoURL.value = "";

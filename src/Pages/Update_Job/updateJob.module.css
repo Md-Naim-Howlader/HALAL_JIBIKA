@@ -59,7 +59,26 @@
 
 /* loading div */
 .loadingDiv {
+  width: 700px;
+  border-radius: 12px;
+  height: 585px;
+  text-align: center;
+  line-height: 700px;
+  display: block;
+
   position: absolute;
-  left: 45%;
-  top: 297px;
+  top: 38%;
+  left: 24%;
+}
+@media screen and (max-width: 992px) {
+  .loadingDiv {
+    top: 61%;
+    left: 14%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .loadingDiv {
+    left: 0%;
+    max-width: 100%;
+  }
 }

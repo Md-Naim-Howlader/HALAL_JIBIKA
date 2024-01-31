@@ -4,8 +4,8 @@ import axios from "axios";
 import { baseURL } from "../../baseURL/baseURL";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
 import { update_form, loadingDiv } from "./updateJob.module.css";
+import UpdateLoading from "../../components/update/UpdateLoading";
 const Update_Job = () => {
   const navigate = useNavigate();
   // get editJob using context api
@@ -64,7 +64,7 @@ const Update_Job = () => {
       Swal.fire({
         position: "top center",
         icon: "success",
-        title: "Your Job has been Updated",
+        title: "Job has been Updated",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -158,12 +158,9 @@ const Update_Job = () => {
                   </form>
                 </div>
               </div>
-              {loading && (
-                <div className={loadingDiv}>
-                  {" "}
-                  <Loading />
-                </div>
-              )}
+            </div>
+            <div className={loading && loadingDiv}>
+              {loading && <UpdateLoading />}
             </div>
           </div>
         </div>

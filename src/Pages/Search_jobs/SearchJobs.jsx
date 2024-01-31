@@ -16,7 +16,7 @@ const SearchJobs = () => {
         onChange={handleChange}
         value={searchText}
         type="text"
-        placeholder="What position are you looking for ?"
+        placeholder="What Job are you looking for ?"
       />
     </div>
   );
