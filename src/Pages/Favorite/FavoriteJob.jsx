@@ -7,7 +7,7 @@ const FavoriteJob = () => {
 
   return (
     <section className="container">
-      <div style={{ paddingTop: "50px" }} className="section__title">
+      <div className="section__title fabjobs">
         <span>FAVORITE JOBS</span>
         <h2>FAVORITE JOBS</h2>
       </div>

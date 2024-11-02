@@ -27,6 +27,9 @@
   text-align: center;
   z-index: 99;
 }
+.fabjobs {
+  padding: 50px;
+}
 
 .section__title span {
   position: absolute;
@@ -157,9 +160,15 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .job__posts {
     grid-template-columns: 1fr;
+  }
+  .fabjobs {
+    padding: 0;
+  }
+  .about__section .mission h1 {
+    font-size: 2rem !important;
   }
 }
 /*
