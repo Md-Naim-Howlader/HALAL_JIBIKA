@@ -1,4 +1,4 @@
-# JobNexify (job portal site)
+# JobNexify (job finder site)
 
 
 
